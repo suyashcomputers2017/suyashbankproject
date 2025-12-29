@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Divs with Different Widths</title>
+    <style>
+        .container {
+            width: 600px; /* Parent container width */
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .first-div {
+            width: 200px; /* Fixed width */
+            height: 100px;
+            background-color: lightblue;
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .second-div {
+            width: 75%; /* 75% of parent container */
+            height: 100px;
+            background-color: lightgreen;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Two Divs with Width Settings</h2>
+    <div class="container">
+        <div class="first-div">First Div (200px wide)</div>
+        <div class="second-div">Second Div (75% of parent)</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wall Clock with Title</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #111;
+      margin: 0;
+      color: #00e5ff;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 36px;
+      text-shadow: 0 0 10px #00e5ff;
+    }
+    .clock {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      border: 10px solid #00e5ff;
+      border-radius: 50%;
+      background: radial-gradient(circle, #222 60%, #111);
+      box-shadow: 0 0 30px #00e5ff;
+    }
+    .number {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      transform-origin: center;
+    }
+    .number span {
+      display: inline-block;
+      transform: rotate(var(--angle));
+    }
+    .hand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: left center;
+      transform: rotate(90deg);
+      border-radius: 4px;
+    }
+    .hour { width: 80px; height: 6px; background: #00e5ff; z-index: 3; }
+    .minute { width: 110px; height: 4px; background: #ff4081; z-index: 2; }
+    .second { width: 130px; height: 2px; background: yellow; z-index: 1; }
+    .center {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border: 3px solid #00e5ff;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      box-shadow: 0 0 10px #00e5ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Suyash Computers Wall Clock</h1>
+  <div class="clock">
+    <!-- Numbers inside -->
+    <div class="number" style="transform: rotate(30deg) translateY(-125px);"><span style="--angle:-30deg">1</span></div>
+    <div class="number" style="transform: rotate(60deg) translateY(-125px);"><span style="--angle:-60deg">2</span></div>
+    <div class="number" style="transform: rotate(90deg) translateY(-125px);"><span style="--angle:-90deg">3</span></div>
+    <div class="number" style="transform: rotate(120deg) translateY(-125px);"><span style="--angle:-120deg">4</span></div>
+    <div class="number" style="transform: rotate(150deg) translateY(-125px);"><span style="--angle:-150deg">5</span></div>
+    <div class="number" style="transform: rotate(180deg) translateY(-125px);"><span style="--angle:-180deg">6</span></div>
+    <div class="number" style="transform: rotate(210deg) translateY(-125px);"><span style="--angle:-210deg">7</span></div>
+    <div class="number" style="transform: rotate(240deg) translateY(-125px);"><span style="--angle:-240deg">8</span></div>
+    <div class="number" style="transform: rotate(270deg) translateY(-125px);"><span style="--angle:-270deg">9</span></div>
+    <div class="number" style="transform: rotate(300deg) translateY(-125px);"><span style="--angle:-300deg">10</span></div>
+    <div class="number" style="transform: rotate(330deg) translateY(-125px);"><span style="--angle:-330deg">11</span></div>
+    <div class="number" style="transform: rotate(360deg) translateY(-125px);"><span style="--angle:-360deg">12</span></div>
+
+    <!-- Hands -->
+    <div class="hand hour" id="hour"></div>
+    <div class="hand minute" id="minute"></div>
+    <div class="hand second" id="second"></div>
+    <div class="center"></div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const sec = now.getSeconds();
+      const min = now.getMinutes();
+      const hr = now.getHours();
+
+      const secDeg = sec * 6;
+      const minDeg = min * 6 + sec * 0.1;
+      const hrDeg = (hr % 12) * 30 + min * 0.5;
+
+      document.getElementById("second").style.transform = `rotate(${secDeg}deg) translateX(-50%)`;
+      document.getElementById("minute").style.transform = `rotate(${minDeg}deg) translateX(-50%)`;
+      document.getElementById("hour").style.transform = `rotate(${hrDeg}deg) translateX(-50%)`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
